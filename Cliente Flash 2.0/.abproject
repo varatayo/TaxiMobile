@@ -5,12 +5,12 @@
   "AppIdentifier": "com.telerik.ClienteFlash20",
   "DisplayName": "Cliente Flash 2.0",
   "Author": "",
-  "Description": "",
+  "Description": "Cliente Flash 2.0",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
     "1",
-	"2"
+    "2"
   ],
   "iOSBackgroundMode": [],
   "WP8TileTitle": "",
@@ -47,7 +47,7 @@
   ],
   "CordovaPluginVariables": {
     "com.telerik.mobiletesting": {
-        "IOS_APP_URL": "friends"
+      "IOS_APP_URL": "friends"
     }
   },
   "AndroidPermissions": [

@@ -62,24 +62,7 @@ app.Login = (function () {
             var password = $loginPassword.val();
 
             // Authenticate using the username and password
-            app.everlive.Users.login(username, password)
-            .then(function () {
-                // EQATEC analytics monitor - track login type
-                if (isAnalytics) {
-                    analytics.TrackFeature('Login.Regular');
-                }
-
-                return app.Users.load();
-            })
-            .then(function () {
-
-                app.mobileApp.navigate('views/activitiesView.html');
-            })
-            .then(null,
-                  function (err) {
-                      app.showError(err.message);
-                  }
-            );
+            app.mobileApp.navigate('views/mapView.html');
         };
 
         // Authenticate using Facebook credentials
