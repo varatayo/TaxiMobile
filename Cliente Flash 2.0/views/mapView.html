@@ -16,7 +16,11 @@
             <button id="map-navigate-home" class="map-tools-button home" data-bind="click: onNavigateHome"></button>
             <input id="map-address" type="search" class="map-tools-input" data-bind="value: address" placeholder="Address" />
             <button id="map-search" class="map-tools-button search" data-bind="click: onSearchAddress"></button>
+        </div>        
+    </div>
+    <div id="map-call-taxi" class="map-solicitud" data-bind="visible: isGoogleMapsInitialized, invisible: hideSearch">
+        <div>
+            <a class="btn btn-signup" data-role="button" data-bind="click: signup">Register</a>
         </div>
     </div>
-    
 </div>

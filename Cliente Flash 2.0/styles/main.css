@@ -565,12 +565,6 @@
 
 /* Map */
 
-#friendsApp .map .signup-btn-wrp {
-    margin: 0 1em;
-    z-index: 5;
-}
-
-/* LOCATION VIEW STYLES */
 #friendsApp .map {
     position: absolute;
     top: 0;
@@ -637,6 +631,28 @@
 }
 #friendsApp .km-wp .map-tools input[type=search].map-tools-input {
     width: 50%;
+}
+
+
+#friendsApp .map-solicitud {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+#friendsApp .map-solicitud > div {
+    position: relative;
+    text-align: center;
+    height: 100%;
+}
+#friendsApp .map-solicitud .map-solicitud-button {
+    margin: 0 1em;  
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 /* Retina Images */
