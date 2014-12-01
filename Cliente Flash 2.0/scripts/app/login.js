@@ -61,8 +61,13 @@ app.Login = (function () {
             var username = $loginUsername.val();
             var password = $loginPassword.val();
 
+            //*********************************************
             // Authenticate using the username and password
+            //*********************************************
+            
+            
             app.mobileApp.navigate('views/mapView.html');
+            //*********************************************
         };
 
         // Authenticate using Facebook credentials

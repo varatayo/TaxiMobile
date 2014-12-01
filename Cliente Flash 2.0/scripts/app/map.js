@@ -36,8 +36,8 @@
                     that._isLoading = false;
                     that.toggleLoading();
 
-                    navigator.notification.alert("Unable to determine current location. Cannot connect to GPS satellite.",
-                        function () { }, "Location failed", 'OK');
+                    navigator.notification.alert("No ha sido posible determinar la ubicación actual.",
+                        function () { }, "Error de localización", 'OK');
                 },
                 {
                     timeout: 30000,
@@ -55,8 +55,8 @@
                 },
                 function (results, status) {
                     if (status !== google.maps.GeocoderStatus.OK) {
-                        navigator.notification.alert("Unable to find address.",
-                            function () { }, "Search failed", 'OK');
+                        navigator.notification.alert("La dirección no se ha podido localizar.",
+                            function () { }, "Búsqueda fallida", 'OK');
 
                         return;
                     }
@@ -85,7 +85,11 @@
                 map: map,
                 position: position
             });
-        },       
+        },   
+        
+        solicitar: function () {
+            $('#waittime-modal').getKendoMobileModalView().open();
+        },   
         
     });
 
@@ -105,7 +109,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 zoomControl: true,
                 zoomControlOptions: {
-                    position: google.maps.ControlPosition.LEFT_BOTTOM
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
                 },
 
                 mapTypeControl: false,
@@ -142,7 +146,7 @@
             //hide loading mask if user changed the tab as it is only relevant to location tab
             kendo.mobile.application.hideLoading();
         },
-
+        
         viewModel: new LocationViewModel()
     };
 }

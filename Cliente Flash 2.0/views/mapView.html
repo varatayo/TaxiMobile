@@ -20,7 +20,20 @@
     </div>
     <div id="map-call-taxi" class="map-solicitud" data-bind="visible: isGoogleMapsInitialized, invisible: hideSearch">
         <div>
-            <a class="btn btn-signup" data-role="button" data-bind="click: signup">Register</a>
+            <a class="map-solicitud-button" data-role="button" data-bind="click: solicitar">Solicitar</a>
         </div>
+    </div>
+</div>
+
+<div id="waittime-modal" data-role="modalview" style="width: 95%; height: 18em;" data-title="Tiempo aproximado">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+        </div>
+    </div>
+    <div>El tiempo aproximado de espera para su solicitud es de aproximadamente</div> <br />
+    <div style="text-align: center;"><h1>5 minutos</h1></div>
+    <div class="button-container">
+        <a data-role="button" data-icon="action">Acepto!</a>
     </div>
 </div>

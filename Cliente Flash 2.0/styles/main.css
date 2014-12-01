@@ -254,9 +254,9 @@
 }
 
 #friendsApp .app-logo {
-    width: 247px;
-    height: 32px;
-    background: transparent url(images/logo-telerik_devcloud.png) no-repeat 0 0;
+    width: 265px;
+    height: 120px;
+    background: transparent url(images/logo_flash.png) no-repeat 0 0;
 }
 
 #friendsApp .app-name {
@@ -389,180 +389,6 @@
     color: #b6c5c6;
 }
 
-/* Activities */
-
-#friendsApp .activities-view .km-content,
-#friendsApp .activity-view .km-content,
-#friendsApp .add-activity-view .km-content,
-#friendsApp .add-comment-view .km-content,
-#friendsApp .activities-view .km-listview {
-    background-color: #fff;
-}
-
-#friendsApp .activities-view .km-list > li,
-#friendsApp .activity-view .km-list > li {
-    overflow: visible;
-    padding: .75em 0;
-    border-width: 0 0 1px;
-    border-color: #eaeced;
-    background-color: #fff;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    color: #34495e;
-}
-
-#friendsApp .activity-view .comments-wrp {
-    margin-top: 1em;
-    border-top: 1px solid #eaeced;
-}
-
-#friendsApp .activities-view .km-list > li:first-child {
-    padding-top: 0;
-}
-
-#friendsApp .user-avatar {
-    float: left;
-    width: 50px;
-}
-
-#friendsApp .user-avatar img {
-    width: 50px;
-    height: 50px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-}
-
-#friendsApp .activity-content {
-    position: relative;
-    padding-left: 5em;
-    font-size: .85rem;
-}
-
-#friendsApp .activity-content .person-name,
-#friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name,
-#friendsApp .activity-content .time-span {
-    font-weight: 600;
-}
-
-#friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name,
-#friendsApp .activity-content .person-name {
-    display: block;
-    margin: 0 0 .5em;
-    color: #3598db;
-    font-size: 1.1rem;
-}
-
-#friendsApp .person-name {
-    overflow: hidden;
-    width: 70%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-#friendsApp .activity-content .time-span {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    color: #6c7884;
-    text-transform: uppercase;
-    font-size: .7rem;
-}
-
-#friendsApp .activity-content .comment-content .time-span {
-    top: 12px;
-    font-size: .6rem;
-}
-
-#friendsApp .user-share-txt {
-    color: #34495e;
-}
-
-#friendsApp .activity-content .comment-content .user-share-txt {
-    font-size: .75rem;
-}
-
-#friendsApp .activity-view .person-name,
-#friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name {
-    margin: .85em 0 1em;
-}
-
-#friendsApp .activity-view .comment-content .person-name {
-    margin: 0;
-    color: #6c7884;
-    font-size: .85rem;
-}
-
-#friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name {
-    padding-left: .75em;
-}
-
-#friendsApp .activity-view .picture {
-    margin: 1em 0 0;
-}
-
-#friendsApp .user-share {
-    position: relative;
-    margin: 2.35em 0 0;
-}
-
-#friendsApp .user-share:before {
-    position: absolute;
-    width: 0;
-    height: 0;
-    content: '';
-}
-
-#friendsApp .user-share:before {
-    top: -10px;
-    left: 16px;
-    border-right: 9px solid transparent;
-    border-bottom: 10px solid #f5f7f8;
-    border-left: 9px solid transparent;
-}
-
-#friendsApp .user-share textarea {
-    float: none;
-    margin: 0;
-    padding: .75em 1em;
-    min-height: 3em;
-    height: 13.5em;
-    background-color: #f5f7f8;
-    resize: none;
-}
-
-#friendsApp .activity-view .km-footer {
-    padding: 0 1em 1em;
-    background: #fff none;
-}
-
-#friendsApp .add-activity-view .km-leftitem,
-#friendsApp .add-comment-view .km-leftitem {
-    left: 1em;
-}
-
-#friendsApp .add-activity-view .km-rightitem,
-#friendsApp .add-comment-view .km-rightitem,
-#friendsApp .activity-view .km-rightitem {
-    right: 1em;
-}
-
-#friendsApp.km-black-translucent-status-bar .km-navbar .km-leftitem,
-#friendsApp.km-black-translucent-status-bar .km-navbar .km-rightitem {
-    margin-top: .4em;
-}
-
-#friendsApp .k-invalid-msg {
-    display: none;
-    margin: 1rem 0 0;
-    padding: 0 1rem;
-    color: #e84c3d;
-}
-
 /* Map */
 
 #friendsApp .map {
@@ -638,10 +464,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.85);
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    z-index: 10;    
 }
 #friendsApp .map-solicitud > div {
     position: relative;
@@ -649,7 +472,7 @@
     height: 100%;
 }
 #friendsApp .map-solicitud .map-solicitud-button {
-    margin: 0 1em;  
+    margin: 30px 0px 30px 0px;  
     bottom: 20px;
     width: 100%;
     text-align: center;
