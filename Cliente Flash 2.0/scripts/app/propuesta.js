@@ -6,17 +6,14 @@
         
 
         acepta: function () {
-            
-                navigator.notification.alert("Both fields are required!",
-                    function () { }, "Login failed", 'OK');
 
+            app.showAlert("acepta el tiempo");
             
 
         },
 
         cancela: function () {
-            navigator.notification.alert("Both fields are required!",
-                    function () { }, "Login failed", 'OK');
+            app.showAlert("acepta el tiempo");
 
         }
     });
