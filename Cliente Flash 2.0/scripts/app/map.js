@@ -88,7 +88,7 @@
         },   
         
         solicitar: function () {
-            $('#waittime-modal').getKendoMobileModalView().open();
+            app.mobileApp.navigate('views/propuestaView.html');
         },   
         
     });
