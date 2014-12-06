@@ -254,9 +254,8 @@
 }
 
 #friendsApp .app-logo {
-    width: 265px;
-    height: 120px;
-    background: transparent url(images/logo_flash.png) no-repeat 0 0;
+    background: transparent url(images/logo-tlerik_devcloud.png) no-repeat 0 0;
+    background-size: 247px 32px;
 }
 
 #friendsApp .app-name {
