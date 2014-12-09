@@ -64,9 +64,16 @@ app.Login = (function () {
             //*********************************************
             // Authenticate using the username and password
             //*********************************************
+            $.post("http://rtflash.azurewebsites.net/usuario/login",
+                { Rut: username, Password: password },
+                function (res) {
+                    if (res.Result.IdUsuario != 0)
+                        app.mobileApp.navigate('views/mapView.html');
+                    else
+                        app.showAlert("El usuario o password ingresados no son correctas.");
+                },
+                "json");
             
-            
-            app.mobileApp.navigate('views/mapView.html');
             //*********************************************
         };
 

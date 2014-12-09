@@ -26,17 +26,20 @@ app.Signup = (function () {
 
             dataSource.BirthDate = birthDate;
 
-            Everlive.$.Users.register(
+            /*Everlive.$.Users.register(
                 dataSource.Username,
                 dataSource.Password,
-                dataSource)
-            .then(function () {
-                app.showAlert("Registration successful");
-                app.mobileApp.navigate('#welcome');
-            },
-            function (err) {
-                app.showError(err.message);
-            });
+                dataSource)*/
+            $.post("http://rtflash.azurewebsites.net/usuario/create",
+                { Nombre: dataSource.DisplayName, Rut: dataSource.Username, Email: dataSource.Email, Password: dataSource.Password, Sexo: "M", FechaNacimiento: dataSource.BirthDate, Descripcion: "" },
+                function (res) {
+                    //if (res.ResponseStatus == null) {
+                        app.showAlert(res);
+                        //app.mobileApp.navigate('#welcome');
+                    //} else {
+                        //app.showAlert("Ha ocurrido un error al registrarse.");
+                    //}
+                }, "json");
         };
 
         // Executed after Signup view initialization

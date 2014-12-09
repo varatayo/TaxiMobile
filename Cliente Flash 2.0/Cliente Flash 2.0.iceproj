@@ -42,6 +42,7 @@
     <Content Include="scripts\app\signup.js" />
     <Content Include="scripts\app\users.js" />
     <Content Include="scripts\lib\everlive.all.min.js" />
+    <Content Include="scripts\lib\JsonServiceClient.js" />
     <Content Include="styles\images\avatar.png" />
     <Content Include="styles\images\icon-add.png" />
     <Content Include="styles\images\icon-add@2x.png" />
@@ -106,6 +107,29 @@
     <Resource Include="App_Resources\WP8\SplashScreenImage.jpg" />
     <Resource Include="App_Resources\WP8\Tiles\Iconic\110x110.png" />
     <Resource Include="App_Resources\WP8\Tiles\Iconic\202x202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Resources\" />
+    <Folder Include="App_Resources\Android\" />
+    <Folder Include="App_Resources\Android\drawable-hdpi\" />
+    <Folder Include="App_Resources\Android\drawable-ldpi\" />
+    <Folder Include="App_Resources\Android\drawable-mdpi\" />
+    <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\iOS\" />
+    <Folder Include="App_Resources\WP8\" />
+    <Folder Include="App_Resources\WP8\Tiles\" />
+    <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
+    <Folder Include="kendo\" />
+    <Folder Include="kendo\js\" />
+    <Folder Include="kendo\styles\" />
+    <Folder Include="kendo\styles\images\" />
+    <Folder Include="Plugins\" />
+    <Folder Include="scripts\" />
+    <Folder Include="scripts\app\" />
+    <Folder Include="scripts\lib\" />
+    <Folder Include="styles\" />
+    <Folder Include="styles\images\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(IceniumTargets)Build.targets" />
 </Project>
