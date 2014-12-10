@@ -26,10 +26,10 @@ app.Signup = (function () {
 
             dataSource.BirthDate = birthDate;
 
-            /*Everlive.$.Users.register(
+            Everlive.$.Users.register(
                 dataSource.Username,
                 dataSource.Password,
-                dataSource)*/
+                dataSource);
             $.post("http://rtflash.azurewebsites.net/usuario/create",
                 { Nombre: dataSource.DisplayName, Rut: dataSource.Username, Email: dataSource.Email, Password: dataSource.Password, Sexo: "M", FechaNacimiento: dataSource.BirthDate, Descripcion: "" },
                 function (res) {
