@@ -254,8 +254,10 @@
 }
 
 #friendsApp .app-logo {
-    background: transparent url(images/logo-tlerik_devcloud.png) no-repeat 0 0;
-    background-size: 247px 32px;
+    background: transparent url(images/logo-flash-2x.png) no-repeat 0 0;
+    margin-left: 40px;
+    height: 120px;
+    background-size: 247px 112px;
 }
 
 #friendsApp .app-name {
@@ -484,8 +486,8 @@
 (min-resolution: 144dpi) {
 
     #friendsApp .app-logo {
-        background-image: url(images/logo-telerik_devcloud@2x.png);
-        background-size: 247px 32px;
+        background-image: url(images/logo-flash-2x.png);
+        background-size: 247px 112px;
     }
 
     #login-form .username:before {
