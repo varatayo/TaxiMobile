@@ -1,17 +1,17 @@
 var app = (function (win) {
     'use strict';
-
-    // Global error handling
-    var showAlert = function(message, title, callback) {
-        navigator.notification.alert(message, callback || function () {
-        }, title, 'OK');
-    };
     
     //traer fecha en formato aplicacio&acute;n definido
     var formattedDate = function () {
         var date = new Date();
         var str = date.getFullYear() + date.getMonth() + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         return str;
+    };
+    
+    // Global error handling
+    var showAlert = function(message, title, callback) {
+        navigator.notification.alert(message, callback || function () {
+        }, title, 'OK');
     };
 
     var showError = function(message) {
@@ -138,6 +138,7 @@ var app = (function (win) {
         formatDate: function (dateString) {
             return kendo.toString(new Date(dateString), 'MMM d, yyyy');
         },
+        
         
         // Current user logout
         logout: function () {
