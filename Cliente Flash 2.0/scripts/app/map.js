@@ -24,7 +24,7 @@
                     position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     map.panTo(position);
                     that._putMarker(position);
-
+                    that._putDir(position);
                     that._isLoading = false;
                     that.toggleLoading();
                 },
@@ -85,7 +85,19 @@
                 map: map,
                 position: position
             });
-        },   
+        },
+        
+        _putDir: function(position) {
+            var that = this;
+
+            geocoder.geocode({ 'latLng': position }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    $("#map-address").val(results[0].formatted_address);
+                } else {
+                    $("#map-address").val("google no ha podido identificar la dirección");
+                }
+            });
+        },
         
         solicitar: function () {
             app.mobileApp.navigate('views/propuestaView.html');

@@ -1,6 +1,13 @@
 var app = (function (win) {
     'use strict';
-
+    
+    //traer fecha en formato aplicacio&acute;n definido
+    var formattedDate = function () {
+        var date = new Date();
+        var str = date.getFullYear() + date.getMonth() + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        return str;
+    };
+    
     // Global error handling
     var showAlert = function(message, title, callback) {
         navigator.notification.alert(message, callback || function () {
@@ -8,15 +15,15 @@ var app = (function (win) {
     };
 
     var showError = function(message) {
-        showAlert(message, 'Error occured');
+        showAlert(message, 'Ha ocurrido un error');
     };
 
     win.addEventListener('error', function (e) {
         e.preventDefault();
 
-        var message = e.message + "' from " + e.filename + ":" + e.lineno;
+        var message = e.message + "' en " + e.filename + ":" + e.lineno;
 
-        showAlert(message, 'Error occured');
+        showAlert(message, 'Ha ocurrido un error');
 
         return true;
     });
@@ -24,7 +31,7 @@ var app = (function (win) {
     // Global confirm dialog
     var showConfirm = function(message, title, callback) {
         navigator.notification.confirm(message, callback || function () {
-        }, title, ['OK', 'Cancel']);
+        }, title, ['OK', 'Cancelar']);
     };
 
     var isNullOrEmpty = function (value) {
@@ -48,7 +55,7 @@ var app = (function (win) {
     var onBackKeyDown = function(e) {
         e.preventDefault();
 
-        navigator.notification.confirm('Do you really want to exit?', function (confirmed) {
+        navigator.notification.confirm('Realmente desea salir de la aplicacion?', function (confirmed) {
             var exit = function () {
                 navigator.app.exitApp();
             };
@@ -60,7 +67,7 @@ var app = (function (win) {
                 }
                 AppHelper.logout().then(exit, exit);
             }
-        }, 'Exit', ['OK', 'Cancel']);
+        }, 'Salir', ['OK', 'Cancelar']);
     };
 
     var onDeviceReady = function() {
@@ -86,12 +93,19 @@ var app = (function (win) {
             console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
         }
     };
+    
+    var reachableCallback = function () {
+        showAlert("La red de datos se encuentra inactiva.", 'Ha ocurrido un error');
+    };
 
     // Handle "deviceready" event
     document.addEventListener('deviceready', onDeviceReady, false);
     // Handle "orientationchange" event
     document.addEventListener('orientationchange', fixViewResize);
-
+    // Handle "offline event"  
+    document.addEventListener("offline", reachableCallback, false);
+    
+    
     // Initialize Everlive SDK
     var el = new Everlive({
                               apiKey: appSettings.everlive.apiKey,
@@ -124,7 +138,8 @@ var app = (function (win) {
         formatDate: function (dateString) {
             return kendo.toString(new Date(dateString), 'MMM d, yyyy');
         },
-
+        
+        
         // Current user logout
         logout: function () {
             return el.Users.logout();
