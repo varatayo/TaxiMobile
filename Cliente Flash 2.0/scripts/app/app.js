@@ -6,6 +6,13 @@ var app = (function (win) {
         navigator.notification.alert(message, callback || function () {
         }, title, 'OK');
     };
+    
+    //traer fecha en formato aplicacio&acute;n definido
+    var formattedDate = function () {
+        var date = new Date();
+        var str = date.getFullYear() + date.getMonth() + date.getDate() + "T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        return str;
+    };
 
     var showError = function(message) {
         showAlert(message, 'Ha ocurrido un error');
@@ -131,7 +138,7 @@ var app = (function (win) {
         formatDate: function (dateString) {
             return kendo.toString(new Date(dateString), 'MMM d, yyyy');
         },
-
+        
         // Current user logout
         logout: function () {
             return el.Users.logout();
