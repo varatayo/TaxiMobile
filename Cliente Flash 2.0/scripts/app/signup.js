@@ -31,25 +31,20 @@ app.Signup = (function () {
                 dataSource.Password,
                 dataSource);
             var sexo = dataSource.Gender == 2 ? "F" : "M";
-                
-            
-            $.post("http://rtflash.azurewebsites.net/usuario/create",
-                {
-                    Nombre: dataSource.DisplayName,
-                    Rut: dataSource.Username,
-                    Email: dataSource.Email,
-                    Password: dataSource.Password,
-                    Sexo: sexo,
-                    FechaNacimiento: dataSource.BirthDate,
-                    Descripcion: ""
-                },
-                function (res) {
-                    if (res.ResponseStatus == null) {
+
+            var request =
+            {
+                Nombre: dataSource.DisplayName,
+                Rut: dataSource.Username,
+                Email: dataSource.Email,
+                Password: dataSource.Password,
+                Sexo: sexo,
+                FechaNacimiento: dataSource.BirthDate,
+                Descripcion: ""
+            };
+            app.serviceClient.postToService("CrearUsuario", request, function (res) {
                         app.mobileApp.navigate('#welcome');
-                    } else {
-                        app.showAlert("Ha ocurrido un error al registrarse.");
-                    }
-                }, "json");
+            }, function (ex) { app.showError(ex); });
             
         };
 

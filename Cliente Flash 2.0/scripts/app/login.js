@@ -70,8 +70,7 @@ app.Login = (function () {
             // Authenticate using the username and password
             //*********************************************
             var request = { Rut: username, Password: password };
-            app.serviceClient.postToService("UsuarioLogin", request,
-                    function (res) {
+            app.serviceClient.postToService("UsuarioLogin", request, function (res) {
                         if (res.Result.IdUsuario != 0) {
                             window.localStorage["username"] = username;
                             window.localStorage["id_usuario"] = res.Result.IdUsuario;
