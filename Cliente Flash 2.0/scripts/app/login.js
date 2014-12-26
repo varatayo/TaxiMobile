@@ -30,10 +30,9 @@ app.Login = (function () {
             $loginPassword = $('#loginPassword');
             
             //si esta logueado entonces lo direcciona al mapa directamente
-            if (window.localStorage["username"] != undefined) {
-                //app.showAlert(window.localStorage["username"]);
-                app.mobileApp.navigate('views/mapView.html', 'fade');
-            }
+            //if (window.localStorage["username"] != undefined)
+                //app.mobileApp.navigate('views/mapView.html', 'fade');
+            
 
             if (!isFacebookLogin) {
                 $('#loginWithFacebook').addClass('disabled');
@@ -70,19 +69,17 @@ app.Login = (function () {
             //*********************************************
             // Authenticate using the username and password
             //*********************************************
-            $.post("http://rtflash.azurewebsites.net/usuario/login",
-                { Rut: username, Password: password },
-                function (res) {
-                    if (res.Result.IdUsuario != 0) {
-                        window.localStorage["username"] = username;
-                        window.localStorage["id_usuario"] = res.Result.IdUsuario;
-                        app.mobileApp.navigate('views/mapView.html');
-                    }
-                    else
-                        app.showAlert("El usuario o password ingresados no son correctas.");
-                },
-                "json");
-            
+            var request = { Rut: username, Password: password };
+            app.serviceClient.postToService("UsuarioLogin", request,
+                    function (res) {
+                        if (res.Result.IdUsuario != 0) {
+                            window.localStorage["username"] = username;
+                            window.localStorage["id_usuario"] = res.Result.IdUsuario;
+                            app.mobileApp.navigate('views/mapView.html');
+                        }
+                        else
+                            app.showAlert("El usuario o password ingresados no son correctas.");
+                    }, function(ex) { app.showError(ex); });
             //*********************************************
         };
 

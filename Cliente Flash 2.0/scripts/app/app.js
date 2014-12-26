@@ -17,7 +17,7 @@ var app = (function (win) {
     var showError = function(message) {
         showAlert(message, 'Ha ocurrido un error');
     };
-
+    
     win.addEventListener('error', function (e) {
         e.preventDefault();
 
@@ -153,8 +153,9 @@ var app = (function (win) {
     var mobileApp = new kendo.mobile.Application(document.body, {
                                                      transition: 'slide',
                                                      statusBarStyle: statusBarStyle,
-                                                     skin: 'flat'
-                                                 });
+                                                     skin: 'flat' });
+
+    var serviceClient = new JsonServiceClient("http://rtflash.azurewebsites.net/");
 
     var getYear = (function () {
         return new Date().getFullYear();
@@ -168,6 +169,7 @@ var app = (function (win) {
         mobileApp: mobileApp,
         helper: AppHelper,
         everlive: el,
+        serviceClient: serviceClient,
         getYear: getYear
     };
 }(window));
