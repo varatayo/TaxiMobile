@@ -1,12 +1,15 @@
-<div data-role="view" id="propuesta" class="noapikey-scrn" data-layout="default" data-model="app.propuestaService.viewModel">
+<div data-role="view" id="propuesta" class="noapikey-scrn"
+     data-layout="default"
+     data-model="app.propuestaService.viewModel"
+     data-init="app.propuestaService.init">
     <div data-role="header">
         <div data-role="navbar">
             Tiempo de Respuesta
             <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
         </div>
-    </div>    
+    </div>
     <div>El tiempo aproximado de espera para su solicitud es de aproximadamente</div> <br />
-    <div style="text-align: center;"><h1>5 minutos</h1></div>
+    <div style="text-align: center;"><h1><span id="minutos-despacho"></span> minutos</h1></div>
     <div>
         <a id="btnAceptar" data-role="button" data-bind="click: acepta">Acepto!</a>
         <a id="btnCancelar" data-role="button" data-bind="click: cancela">Cancelo!</a>

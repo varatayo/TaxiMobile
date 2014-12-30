@@ -1,6 +1,7 @@
 (function (global) {
     var map,
         geocoder,
+        markerPosition,
         LocationViewModel,
         app = global.app = global.app || {};
 
@@ -13,8 +14,7 @@
         hideSearch: false,
 
         onNavigateHome: function () {
-            var that = this,
-                position;
+            var that = this, position;
 
             that._isLoading = true;
             that.toggleLoading();
@@ -29,18 +29,28 @@
                     that.toggleLoading();
                 },
                 function (error) {
+                    var errorText = "No ha sido posible determinar la ubicacio&acute;n actual.\n";
+                    if (error.POSITION_UNAVAILABLE) {
+                        navigator.notification.alert(errorText + " ERROR MESSAGE : " + error.message,
+                            function () { }, "POSITION_UNAVAILABLE " + error.code, 'OK');
+                    }
+                    else if (error.PERMISSION_DENIED) {
+                        navigator.notification.alert(errorText, function () { }, "PERMISSION_DENIED", 'OK');
+                    }
+                    else if (error.TIMEOUT) {
+                        navigator.notification.alert(errorText, function () { }, "TIMEOUT", 'OK');
+                    }
+
                     //default map coordinates
                     position = new google.maps.LatLng(43.459336, -80.462494);
                     map.panTo(position);
 
                     that._isLoading = false;
                     that.toggleLoading();
-
-                    navigator.notification.alert("No ha sido posible determinar la ubicación actual.",
-                        function () { }, "Error de localización", 'OK');
                 },
                 {
-                    timeout: 30000,
+                    maximumAge: 0,
+                    timeout: 10000,
                     enableHighAccuracy: true
                 }
             );
@@ -55,9 +65,8 @@
                 },
                 function (results, status) {
                     if (status !== google.maps.GeocoderStatus.OK) {
-                        navigator.notification.alert("La dirección no se ha podido localizar.",
-                            function () { }, "Búsqueda fallida", 'OK');
-
+                        navigator.notification.alert("La direccio&acute;n no se ha podido localizar.",
+                            function () { }, "Bu&acute;squeda fallida", 'OK');
                         return;
                     }
 
@@ -83,7 +92,18 @@
 
             that._lastMarker = new google.maps.Marker({
                 map: map,
-                position: position
+                position: position,
+                draggable: true
+            });
+            markerPosition = position;
+            google.maps.event.addListener(that._lastMarker, 'drag', function (event) {
+                geocoder.geocode({ 'latLng': event.latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        markerPosition = position;
+                        $("#map-address").val(results[0].formatted_address);
+                        map.panTo(position);
+                    }
+                });
             });
         },
         
@@ -94,12 +114,15 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                     $("#map-address").val(results[0].formatted_address);
                 } else {
-                    $("#map-address").val("google no ha podido identificar la dirección");
+                    $("#map-address").val("google no ha podido identificar la direccio&acute;n");
                 }
             });
         },
         
         solicitar: function () {
+            app.showAlert(markerPosition);
+            window.localStorage["latSolicitud"] = markerPosition.k;
+            window.localStorage["lngSolicitud"] = markerPosition.D;
             app.mobileApp.navigate('views/propuestaView.html');
         },   
         
@@ -132,6 +155,8 @@
             geocoder = new google.maps.Geocoder();
             app.locationService.viewModel.onNavigateHome.apply(app.locationService.viewModel, []);
             
+            
+
             streetView = map.getStreetView();
 
 			google.maps.event.addListener(streetView, 'visible_changed', function() {

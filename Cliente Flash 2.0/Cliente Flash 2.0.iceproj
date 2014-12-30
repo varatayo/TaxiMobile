@@ -22,6 +22,7 @@
   <ItemGroup>
     <Content Include=".abignore" />
     <Content Include=".abproject" />
+    <Content Include="App_Resources\Android\xml\config.xml" />
     <Content Include="App_Resources\iOS\config.xml" />
     <Content Include="cordova.android.js" />
     <Content Include="cordova.ios.js" />
@@ -117,6 +118,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi\" />
     <Folder Include="App_Resources\Android\drawable-mdpi\" />
     <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\Android\xml\" />
     <Folder Include="App_Resources\iOS\" />
     <Folder Include="App_Resources\WP8\" />
     <Folder Include="App_Resources\WP8\Tiles\" />
