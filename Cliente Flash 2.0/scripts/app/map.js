@@ -97,11 +97,10 @@
             });
             markerPosition = position;
             google.maps.event.addListener(that._lastMarker, 'drag', function (event) {
+                markerPosition = event.latLng;
                 geocoder.geocode({ 'latLng': event.latLng }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        markerPosition = position;
                         $("#map-address").val(results[0].formatted_address);
-                        map.panTo(position);
                     }
                 });
             });
@@ -120,7 +119,6 @@
         },
         
         solicitar: function () {
-            app.showAlert(markerPosition);
             window.localStorage["latSolicitud"] = markerPosition.k;
             window.localStorage["lngSolicitud"] = markerPosition.D;
             app.mobileApp.navigate('views/propuestaView.html');
